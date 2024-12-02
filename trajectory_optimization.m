@@ -4,7 +4,7 @@
 syms phi_a phi_b real;      % Sech curve magnitude [rad]
 phi_scale = [phi_a phi_b]'; 
 t_init = 0;                 % Start time [ms]
-t_final = 2000;             % End time [ms]
+t_final = 5000;             % End time [ms]
 t_middle = t_final / 2;     % Middle time [ms]
 t_interval = 10;            % Simulation time resolution [ms]
 
@@ -18,13 +18,14 @@ l = 0.45;           % Body length (IP) [m]
 g = 9.81;           % [m/s^2]
 
 % Desired states
-theta_final_desired = 4 * pi;   % Desired rotation of the ball [rad]
-theta_d_init = 0;               % [rad/s]
-theta_d_final_desired = 0;      % [rad/s]
+theta_final_desired = 4 * pi;   % Desired rotation of the ball (travel distance) [rad]
+theta_d_init = 0;               % Desired initial velocity [rad/s]
+theta_d_final_desired = 0;      % Desired final velocity [rad/s]
+
 
 % Define weights
 w1 = 1; w2 = 1000; w3 = 100;    % Objective function weights
-k = 1;                          % The width parameter of the sech curve
+k = 5;                          % The width parameter of the sech curve
 
 % Equation of motion
 alpha = I_ball + (m_ball + m_body) * r^2;
@@ -90,20 +91,20 @@ ylabel('\tau (Nm)');
 title('Motor torque');
 sgtitle('Trajectory Optimization');
 
-figure(2);
-% Plot for the left y-axis (Body angle in radians)
-yyaxis left
-plot(t./1000, traj_sol, 'b', 'LineWidth', 2);  
-xlabel('Time (s)', 'FontSize', 16);             
-ylabel('\phi (Body angle) [rad]', 'FontSize', 16);
-ylim([-0.15, 0]);
-% Plot for the right y-axis (Ball angle in radians)
-yyaxis right
-plot(t./1000, theta_sol, 'r', 'LineWidth', 2);  
-ylabel('\theta (Ball angle) [rad]', 'FontSize', 16);
-% Add legends to identify the plots, placing it at the bottom right
-legend('\phi (Body angle) [rad]', '\theta (Ball angle) [rad]', ...
-       'Location', 'southeast', 'FontSize', 16);                         
+% figure(2);
+% % Plot for the left y-axis (Body angle in radians)
+% yyaxis left
+% plot(t./1000, traj_sol, 'b', 'LineWidth', 2);  
+% xlabel('Time (s)', 'FontSize', 16);             
+% ylabel('\phi (Body angle) [rad]', 'FontSize', 16);
+% ylim([-0.15, 0]);
+% % Plot for the right y-axis (Ball angle in radians)
+% yyaxis right
+% plot(t./1000, theta_sol, 'r', 'LineWidth', 2);  
+% ylabel('\theta (Ball angle) [rad]', 'FontSize', 16);
+% % Add legends to identify the plots, placing it at the bottom right
+% legend('\phi (Body angle) [rad]', '\theta (Ball angle) [rad]', ...
+%        'Location', 'southeast', 'FontSize', 16);                         
 
 %% Save trajectory
 phi_d_sol = double(subs(phi_d, phi_scale, phi_sol));

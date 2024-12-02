@@ -32,12 +32,15 @@ r_ball = 0.114;     % Ball radius [m]
 l = 0.45;           % Body length (IP) [m]
 
 % PID Control Parameters
-k_p = 800;
-k_i = 100;
-k_d = 200;
+k_p = 5000;
+k_i = 200;
+k_d = 500;
 
 % Spring Damper Parameters
 k_s = 2000;
 b_d = 50;
 
 t_interval = 10;            % Simulation time resolution [ms]
+
+% Load Trajectory
+load('data/traj_1.mat', 'traj_sol', 'time');
