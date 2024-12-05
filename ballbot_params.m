@@ -31,8 +31,12 @@ m_body = 92;        % Body mass [kg]
 r_ball = 0.114;     % Ball radius [m]
 l = 0.45;           % Body length (IP) [m]
 
-r_ring = 0.282;     % Ring radius [m]
-h_ring = 0.05;      % Ring distance from ground [m]
+r_ring = 0.282;     % Ring radius [m] 
+% The radius of the ring is set to 0.282, such that when the leg is 0.05m
+% from ground. Legs will contact with ground at 5 degree tilt.
+h_ring = 0.114;     % Ring distance from ground [m]
+
+k_leg = 100;        % Leg Stiffness [N/m] 
 
 % PID Control Parameters
 k_p = 5000;
