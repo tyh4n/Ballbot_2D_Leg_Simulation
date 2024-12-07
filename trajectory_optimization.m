@@ -4,7 +4,7 @@
 syms phi_a phi_b real;      % Sech curve magnitude [rad]
 phi_scale = [phi_a phi_b]'; 
 t_init = 0;                 % Start time [ms]
-t_final = 5000;             % End time [ms]
+t_final = 2000;             % End time [ms]
 t_middle = t_final / 2;     % Middle time [ms]
 t_interval = 10;            % Simulation time resolution [ms]
 
