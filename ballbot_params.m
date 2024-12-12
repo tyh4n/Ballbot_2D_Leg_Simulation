@@ -23,6 +23,8 @@ r_ring = 0.307;     % Ring radius [m]
 h_ring = 0.114;     % Ring distance from ground [m]
 h_leg = 0.04;       % Leg distance from ground [m]
 
+leg_mode = 0;     % Leg prismatic joint mode, 0: normal, 1: locked, -1: disengaged
+
 %% PID Control Parameters
 k_p = 5000;
 k_i = 200;
